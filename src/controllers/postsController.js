@@ -32,13 +32,16 @@ export async function postarNovoPost(req, res) {
 }
 
 export async function uploadImagem(req, res) {
-    const novoPost = {
-        descricao: "",
-        imgUrl: req.file.originalname,
-        alt: ""
-    };
-
     try {
+        console.log(req.file.path);
+        const imgBuffer = fs.readFileSync(req.file.path);
+        const descricao = await gerarDescricaoComGemini(imgBuffer);
+
+        const novoPost = {
+            descricao: descricao,
+            imgUrl: req.file.originalname,
+            alt: ""
+        };    
         const postCriado = await criarPost(novoPost);
         const imagemAlterada = `uploads/${postCriado.insertedId}.png`;
         fs.renameSync(req.file.path, imagemAlterada);
@@ -51,7 +54,7 @@ export async function uploadImagem(req, res) {
 
 export async function atualizarPostExistente(req, res) {
     const id = req.params.id;
-    const urlImagem = `http://localhost:3000/${id}.png`;
+    const urlImagem = `https://alura-imersao-backend-832439105029.southamerica-east1.run.app/${id}.png`;
 
     try {
         const imgBuffer = fs.readFileSync(`uploads/${id}.png`);
