@@ -16,3 +16,7 @@
 - Adição de rota para enviar posts.
 - Adição de rota para fazer upload e imagens.
 - Uso de Multer para upload de imagens.
+
+## Aula 5:
+- Implementação de put para atualizar o post.
+- Adição de serviço do Gemini para gerar a descrição da imagem.

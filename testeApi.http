@@ -11,3 +11,24 @@ Content-Type: image/jpeg
 ###
 
 GET http://localhost:3000/posts/
+
+###
+
+PUT http://localhost:3000/upload/674011f613da8ff659e21a9c
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="imagem"; filename="Convite Lina 8 Anos.jpg"
+Content-Type: image/jpeg
+
+< D:/Users/julio/Imagens/Convite Lina 8 Anos.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+
+PUT http://localhost:3000/upload/674011f613da8ff659e21a9c
+Content-Type: application/json
+
+{
+     "alt": "Logo gerado pelo Gemini"
+}
